@@ -114,7 +114,7 @@ def main():
     sched_in = input('Alter Schedule? (a - add, r - remove): ')
     if sched_in == 'a':
         term_in = input('Enter term: ')
-        if term_in not in ['A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'D1', 'D2', 'E1', 'E1']:
+        if term_in not in ['1A', '1B', '2A', '2B', '3A', '3B', '4A', '4B', '5A', '5B']:
             print('Bad Input')
             return False
         
