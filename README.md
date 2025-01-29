@@ -7,6 +7,12 @@ Ability to schedule future classes while focusing on past prereq/ antireq
 
 To use the program, replace #---API_KEY_HERE--- with your api key, which you can configure [here](https://openapi.data.uwaterloo.ca/api-docs/index.html)
 
+##  Run
+
+Install requests module:
+
+```pip install requests```
+
 ```python3 uw-class-search``` begins the program
 
 ## Commands
