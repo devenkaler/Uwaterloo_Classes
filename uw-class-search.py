@@ -1,6 +1,7 @@
 import requests
+from schedule import addSchedule, remSchedule, printSchedule, resetSchedule
 
-API_KEY = #---API_KEY_HERE---
+API_KEY = #API_KEY_HERE
 url = 'https://openapi.data.uwaterloo.ca/'
 
 # MONTH YYYY (string)
@@ -19,6 +20,7 @@ def getClass(sub, code):
     r = requests.get(url+f'v3/Courses/{1251}/{sub}/{code}', headers={'X-API-KEY': API_KEY})
     return r.json()
 
+
 #returns class availability in even and odd years
 def getClassAvailability(sub, code):
     start_year = 2023
@@ -32,6 +34,7 @@ def getClassAvailability(sub, code):
                 
 
     return res
+
 
 #returns string of basic class info
 def getClassInfo(class_name):
@@ -54,10 +57,26 @@ def getClassInfo(class_name):
 
     return res
 
+
 #outputs basic class info to terminal
 def main():
-    c = input('\nEnter Class (SUBJECT CLASSNUMBER) "q" to exit: ') #class name
-    c  = c.upper()
+    c = input('\nEnter Class "q" to exit "h" for help: ') #class name
+
+    if (c == 'h'):
+        print("Enter class (SUBJECT CLASS-CODE)")
+        print("v - view current schedule")
+        print("r - reset current schedule")
+        print("q - quit")
+
+    elif (c == 'v'):
+        printSchedule()
+
+    elif (c == 'r'):
+        if (input('resetting current schedule, are you sure? (y/n): ') == 'y'):
+            resetSchedule()
+
+    c  = ' '.join(c.upper().split())
+
     try:
         ci = getClassInfo(c).split('\n') #class info
     except:
@@ -91,6 +110,18 @@ def main():
     for n in range(longest+4): print('-',end='')
 
     print('\n\n')
+
+    sched_in = input('Alter Schedule? (a - add, r - remove): ')
+    if sched_in == 'a':
+        term_in = input('Enter term: ')
+        if term_in not in ['A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'D1', 'D2', 'E1', 'E1']:
+            print('Bad Input')
+            return False
+        
+        addSchedule(term_in, c)
+
+    elif sched_in == 'r':
+        remSchedule(c)
 
     return c
 
