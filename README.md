@@ -10,11 +10,16 @@ To use the program, replace #---API_KEY_HERE--- with your api key, which you can
 ```python3 uw-class-search``` begins the program
 
 ## Commands
-Enter class (SUBJECT CLASS-CODE)
+Enter class (SUBJECT CLASS-CODE) - display class info
+
 h - help
+
 q - quit
+
 v - view current schedule
+
 r - reset current schedule
+
 q - quit
 
 ## Class Details
