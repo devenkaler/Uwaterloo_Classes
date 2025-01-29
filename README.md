@@ -45,9 +45,6 @@ antireq - antirequisites
 
 UWFLOW - link to UWFLOW page for the course
 
-## Scheduler
-
-
 ## Example
 ```python3 uw-class-search```
 
